@@ -32,7 +32,14 @@ module Edr
         @instance.map(model_class, o)
       end
     end
-    
+
+    def self.map_model_class_to_data_class(model_class, data_class)
+      define unless @instance
+      instrument(model_class, with: data_class)
+
+      @instance.map(model_class, data_class)
+    end
+
     def initialize(&block)
       @data_to_model_map = {}
       @model_to_data_map = {}
@@ -64,12 +71,12 @@ module Edr
       data_class = args[:with]
       model_class.send(:include, Edr::Model)
       model_class.fields(*data_class.attribute_names)
-#      binding.pry
-      model_class.wrap_associations(
-        *data_class.reflect_on_all_associations.map(&:name)
-      )
+      #      binding.pry
+      data_class.reflect_on_all_associations.each do |assoc|
+        model_class.wrap_associations(assoc.name)
+      end
     end
-    
+
     def model_to_data_map
       @model_to_data_map
     end

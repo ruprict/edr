@@ -80,4 +80,5 @@ describe Edr::Repository do
       ->{OrderRepository.delete_by_id 999}.should raise_error
     end
   end
+
 end

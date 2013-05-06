@@ -77,6 +77,9 @@ module Edr
           define_method association_name do
             wrap(association association_name)
           end
+#          define_method("add_#{association_name.to_s.singularize}") do |attrs|
+#            wrap(association_name).new(attrs)
+#          end
         end
       end
 

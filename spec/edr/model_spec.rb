@@ -36,4 +36,18 @@ describe Edr::Model do
       order.amount.should == 99
     end
   end
+
+#  describe "Wrapping a collection association" do
+#    example do
+#      class Order
+#        include Edr::Model
+#        wrap_associations:items
+#      end
+#    end
+#
+#    it "creates a method to add to the collection" do
+#      order = Order.new
+#      order.should respond_to(:add_item)
+#    end
+#  end
 end

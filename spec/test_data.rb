@@ -58,7 +58,8 @@ end
 
 # STEP3: map data objects to domain objects
 # --------------------------------------------------
-Edr::Registry.map_models_to_mappers
+Edr::Registry.map_model_class_to_data_class(Order, OrderData)
+Edr::Registry.map_model_class_to_data_class(Item, ItemData)
 
 
 # STEP4: Define repository to access data
