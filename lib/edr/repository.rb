@@ -22,6 +22,16 @@ module Edr
 
     def persist model
       data_object = data(model)
+      data_object.save
+      
+      model.id = data_object.id
+      model.send(:repository=, self)
+      
+      model
+    end
+
+    def persist! model
+      data_object = data(model)
       data_object.save!
       
       model.id = data_object.id

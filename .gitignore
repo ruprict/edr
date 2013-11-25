@@ -20,3 +20,5 @@ Gemfile.lock
 _yardoc
 doc/
 TAGS
+
+.DS_Store
