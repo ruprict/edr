@@ -11,7 +11,8 @@ module Edr
     end
 
     def find id
-      wrap(data_class.find(id))
+      obj = data_class.get!(id)
+      wrap(obj) if obj
     end
 
     def all
